@@ -24,7 +24,7 @@ void filling_the_matrix(float (*matrix)[4])                                     
     }
 }
 
-void filling_the_matrix1(float *matrix)                                            // Метод проверяет корректность ввода значений
+void filling_the_vector(float *matrix)                                             // Метод проверяет корректность ввода значений
 {                                                                                  // вектора и записывает их в массив
     for (int j = 0; j < 4; j++)
     {
@@ -103,7 +103,7 @@ int main()
     std::cout << " Enter mtaritsa values:" << std::endl;                          // Запрашиваем данные для матрицы
     filling_the_matrix(a);                                                        // Записываем данные в матрицу
     std::cout << " Enter vector values:" << std::endl;                            // Запрашиваем данные для вектора
-    filling_the_matrix1(b);                                                       // Записываем данные вектора
+    filling_the_vector(b);                                                        // Записываем данные вектора
     multiplaying_a_matrix_by_a_vector(a, b, c);                                   // Умножаем матрицу на вектор
     std::cout << std::endl;
     std::cout << std::string(level * 2, ' ') << " Multiplying the matrix" << std::endl;
@@ -117,5 +117,4 @@ int main()
     std::cout << std::string(level * 2, ' ') << " Result:" << std::endl;
     std::cout << std::endl;
     show_vector(c);                                                               // Выводим в консоль вектор - результат
-    
 }
