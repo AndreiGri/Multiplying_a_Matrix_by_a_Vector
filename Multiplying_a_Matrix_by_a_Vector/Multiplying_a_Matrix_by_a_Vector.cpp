@@ -47,12 +47,25 @@ void filling_the_matrix1(float *matrix)                                         
 
 int main()
 {
-    float a[4][4];                                                               // Объявляем массив квадратной матрицы
-    float b[4];                                                                  // Обявляем массив вектора
-    float c[4];                                                                  // Объявляем массив результата умножения матрицы на вектор
+    float a[4][4];                                                                // Объявляем массив квадратной матрицы
+    float b[4];                                                                   // Обявляем массив вектора
+    float c[4]{ 0, 0, 0, 0 };                                                     // Объявляем массив результата умножения матрицы на вектор
 
-    std::cout << " Enter mtaritsa values:" << std::endl;                         // Запрашиваем данные для матрицы
-    filling_the_matrix(a);                                                       // Записываем данные в матрицу
-    std::cout << " Enter vector values:" << std::endl;                           // Запрашиваем данные для вектора
-    filling_the_matrix1(b);                                                      // Записываем данные вектора
+    std::cout << " Enter mtaritsa values:" << std::endl;                          // Запрашиваем данные для матрицы
+    filling_the_matrix(a);                                                        // Записываем данные в матрицу
+    std::cout << " Enter vector values:" << std::endl;                            // Запрашиваем данные для вектора
+    filling_the_matrix1(b);                                                       // Записываем данные вектора
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            c[i] += a[i][j] * b[i];
+        }
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+        std::cout << " |" << c[i] << '|' << std::endl;
+    }
 }
