@@ -45,8 +45,57 @@ void filling_the_matrix1(float *matrix)                                         
     }
 }
 
+void show_vector(float* matrix)                                                   // Метод выводит в консоль вектор
+{
+    for (int i = 0; i < 4; i++)
+    {
+        int level = 1;
+        std::cout << std::string(level * 2, ' ') << '|' << '\t' << matrix[i] << '\t' << '|' << std::endl;
+    }
+}
+
+void show_matrix(float(*matrix)[4])                                              // Метод выводит в консоль матрицу
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            int level = 1;
+            if (j == 0)
+            {
+                std::cout << std::string(level * 2, ' ') << '|' << '\t' << matrix[i][j] << ',' << '\t';
+            }
+            else
+            {
+                if (j == 3)
+                {
+                    std::cout << matrix[i][j] << '\t' << '|' << std::endl; 
+                }
+                else
+                {
+                    std::cout << matrix[i][j] << ',' << '\t';
+                }
+            }
+        }
+    }
+}
+
+void multiplaying_a_matrix_by_a_vector(float(*matrix1)[4], float* matrix2, float* matrix3) // Метод умножает матрицу на вектор
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            matrix3[i] += matrix1[i][j] * matrix2[i];
+        }
+    }
+}
+
 int main()
 {
+    system("color 80");
+
+    int level = 1;
     float a[4][4];                                                                // Объявляем массив квадратной матрицы
     float b[4];                                                                   // Обявляем массив вектора
     float c[4]{ 0, 0, 0, 0 };                                                     // Объявляем массив результата умножения матрицы на вектор
@@ -55,17 +104,18 @@ int main()
     filling_the_matrix(a);                                                        // Записываем данные в матрицу
     std::cout << " Enter vector values:" << std::endl;                            // Запрашиваем данные для вектора
     filling_the_matrix1(b);                                                       // Записываем данные вектора
-
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            c[i] += a[i][j] * b[i];
-        }
-    }
-
-    for (int i = 0; i < 4; i++)
-    {
-        std::cout << " |" << c[i] << '|' << std::endl;
-    }
+    multiplaying_a_matrix_by_a_vector(a, b, c);                                   // Умножаем матрицу на вектор
+    std::cout << std::endl;
+    std::cout << std::string(level * 2, ' ') << " Multiplying the matrix" << std::endl;
+    std::cout << std::endl;
+    show_matrix(a);                                                               // Выводим в консоль матрицу
+    std::cout << std::endl;
+    std::cout << std::string(level * 2, ' ') << " by vector" << std::endl;
+    std::cout << std::endl;
+    show_vector(b);                                                               // Выводим в консоль вектор - множитель
+    std::cout << std::endl;
+    std::cout << std::string(level * 2, ' ') << " Result:" << std::endl;
+    std::cout << std::endl;
+    show_vector(c);                                                               // Выводим в консоль вектор - результат
+    
 }
